@@ -1,7 +1,11 @@
 package examenlab1;
+import java.awt.GridLayout;
 import java.util.Calendar;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Game extends RentItem implements MenuActions{ 
     private Calendar fechaPublicacion;
@@ -76,19 +80,32 @@ public class Game extends RentItem implements MenuActions{
     public void ejecutarOpcion(int opcion){
         switch(opcion){
             case 1:
-                try {
-                    String year = JOptionPane.showInputDialog(null, "Ingrese el año (ej: 2023):", "Actualizar Fecha", JOptionPane.QUESTION_MESSAGE);
-                    if(year == null) return;
-                    String mes = JOptionPane.showInputDialog(null, "Ingrese el mes (1-12):", "Actualizar Fecha", JOptionPane.QUESTION_MESSAGE);
-                    if(mes == null) return;
-                    String dia = JOptionPane.showInputDialog(null, "Ingrese el dia:", "Actualizar Fecha", JOptionPane.QUESTION_MESSAGE);
-                    if(dia == null) return;
-                    setFechaPublicacion(Integer.parseInt(year.trim()), Integer.parseInt(mes.trim()), Integer.parseInt(dia.trim()));
-                    JOptionPane.showMessageDialog(null, "Fecha de publicacion actualizada correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
-                } catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(null, "Entrada invalida. Ingrese numeros.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                break;
+            JTextField txtYear = new JTextField();
+            JTextField txtMes  = new JTextField();
+            JTextField txtDia  = new JTextField();
+
+            JPanel panelFecha = new JPanel(new GridLayout(3, 2, 5, 8));
+            panelFecha.add(new JLabel("Año:"));
+            panelFecha.add(txtYear);
+            panelFecha.add(new JLabel("Mes (1-12):"));
+            panelFecha.add(txtMes);
+            panelFecha.add(new JLabel("Día:"));
+            panelFecha.add(txtDia);
+
+            int res = JOptionPane.showConfirmDialog(null, panelFecha,"Actualizar Fecha de Publicación", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+            if(res!=JOptionPane.OK_OPTION) break;
+
+            try {
+                int y = Integer.parseInt(txtYear.getText().trim());
+                int m = Integer.parseInt(txtMes.getText().trim());
+                int d = Integer.parseInt(txtDia.getText().trim());
+                setFechaPublicacion(y, m, d);
+                JOptionPane.showMessageDialog(null, "Fecha de publicacion actualizada correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+            } catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "Entrada invalida. Ingrese solo numeros.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            break;
 
             case 2:
                 String spec = JOptionPane.showInputDialog(null, "Ingrese la especificacion tecnica:", "Agregar Especificacion", JOptionPane.QUESTION_MESSAGE);

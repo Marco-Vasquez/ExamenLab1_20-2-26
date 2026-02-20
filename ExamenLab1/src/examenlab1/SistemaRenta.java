@@ -11,25 +11,24 @@ import java.util.Calendar;
 
 public class SistemaRenta extends JFrame {
 
-    private ArrayList<RentItem> items = new ArrayList<>();
+    private ArrayList<RentItem> items=new ArrayList<>();
+   static final Color C_BG=new Color(0x00001A);
+    static final Color C_PANEL=new Color(0x000000);
+    static final Color C_CARD=new Color(0x202A44);
+    static final Color C_FIELD=new Color(22,22,38);
+    static final Color C_BORDER=new Color(50,50,80);
+    static final Color C_RED=new Color(220,60,60);
+    static final Color C_BLUE=new Color(60,140,240);
+    static final Color C_GREEN=new Color(60,200,120);
+    static final Color C_TEXT=new Color(220,220,240);
+    static final Color C_MUTED=new Color(110,110,150);
+    static final Color C_YELLOW=new Color(240,190,50);
 
-    static final Color C_BG     = new Color(0x00001A);
-    static final Color C_PANEL  = new Color(0x000000);
-    static final Color C_CARD   = new Color(0x202A44);
-    static final Color C_FIELD  = new Color(22, 22, 38);
-    static final Color C_BORDER = new Color(50, 50, 80);
-    static final Color C_RED    = new Color(220, 60, 60);
-    static final Color C_BLUE   = new Color(60, 140, 240);
-    static final Color C_GREEN  = new Color(60, 200, 120);
-    static final Color C_TEXT   = new Color(220, 220, 240);
-    static final Color C_MUTED  = new Color(110, 110, 150);
-    static final Color C_YELLOW = new Color(240, 190, 50);
-
-    static final Font F_TITLE = new Font("Times New Roman", Font.BOLD, 26);
-    static final Font F_HEAD  = new Font("Times New Roman", Font.BOLD, 14);
-    static final Font F_MONO  = new Font("Times New Roman", Font.PLAIN, 12);
-    static final Font F_MONOB = new Font("Times New Roman", Font.BOLD, 13);
-    static final Font F_SMALL = new Font("Times New Roman", Font.PLAIN, 11);
+    static final Font F_TITLE=new Font("Times New Roman",Font.BOLD,26);
+    static final Font F_HEAD=new Font("Times New Roman",Font.BOLD,14);
+    static final Font F_MONO=new Font("Times New Roman",Font.PLAIN,12);
+    static final Font F_MONOB=new Font("Times New Roman",Font.BOLD,13);
+    static final Font F_SMALL=new Font("Times New Roman",Font.PLAIN,11);
 
     public SistemaRenta() {
         setTitle("MULTIMEDIA RENTAL SYSTEM");
