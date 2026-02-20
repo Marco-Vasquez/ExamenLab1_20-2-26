@@ -17,7 +17,7 @@ public abstract class RentItem {
     private double baseRenta;
     private int copiasDisponibles;
     private ImageIcon imagen;
-    private RentItem(String codigo, String nombreItem, double baseRenta){
+    public RentItem(String codigo, String nombreItem, double baseRenta){
         this.codigo=codigo;
         this.nombreItem=nombreItem;
         this.baseRenta=baseRenta;
