@@ -1,7 +1,6 @@
 package examenlab1;
 import java.util.Calendar;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 public class Game extends RentItem implements MenuActions{ 
     private Calendar fechaPublicacion;
@@ -53,7 +52,8 @@ public class Game extends RentItem implements MenuActions{
    
     @Override
     public String toString(){
-        return super.toString()+"\nPublicacion: "+fechaPublicacion+"– PS3 Game";
+        String fecha=(fechaPublicacion.get(Calendar.DAY_OF_MONTH))+"|"+(fechaPublicacion.get(Calendar.MONTH)+1)+"|"+fechaPublicacion.get(Calendar.YEAR);
+        return super.toString()+"\nPublicacion: "+fecha+"– PS3 Game";
     }
 
     @Override
