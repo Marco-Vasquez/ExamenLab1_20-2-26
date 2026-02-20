@@ -5,6 +5,7 @@
 package examenlab1;
 import java.util.Calendar;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,7 +30,42 @@ public class Game extends RentItem implements MenuActions{
         return fechaPublicacion;
     }
     
+    public void addEspecificaciones(String especificacion){
+        especificaciones.add(especificacion);
+        
+    }
+    public void setFechaPublicacion(int year, int mes, int dia){
+        this.fechaPublicacion=Calendar.getInstance();
+        fechaPublicacion.set(year, mes - 1, dia);
+    }
+    
+    public void listarEspecificaciones(){
+        listEspecificacionesRec(0);
+    }
+
+    private void listEspecificacionesRec(int i) {
+        if (i>=especificaciones.size())
+            return;
+        System.out.println((i+1)+". "+especificaciones.get(i));
+        listEspecificacionesRec(i+1);
+        
+        
+    }
  
+    public String getEspecificacionesTexto(){
+    if(especificaciones.isEmpty())
+        return "Sin especificaciones";
+    
+    return getEspecificacionesRec(0);
+    }
+
+    private String getEspecificacionesRec(int i) {
+        if(i>=especificaciones.size()) 
+            return "";
+        
+        return (i+1)+". "+especificaciones.get(i)+"\n"+getEspecificacionesRec(i+1);
+    }
+    
     
 
    
@@ -38,8 +74,8 @@ public class Game extends RentItem implements MenuActions{
         return super.toString()+"\nPublicacion: "+fechaPublicacion+"– PS3 Game";
     }
     @Override
-    public double pagoRenta(int dias) {
-        return 0;
+    public double pagoRenta(int dias){
+        return PRECIO_FIJO*dias;
     }
 
     @Override
@@ -47,7 +83,7 @@ public class Game extends RentItem implements MenuActions{
     }
 
     @Override
-    public void ejecutarOpcion(int opcion) {
+    public void ejecutarOpcion(int opcion){
     
     }
     
