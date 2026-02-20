@@ -23,7 +23,9 @@ public abstract class RentItem {
         this.baseRenta=baseRenta;
         this.copiasDisponibles=0;
     }
+    
     public abstract double pagoRenta(int dias);
+    
     public String getCodigo(){
         return codigo;
     }
