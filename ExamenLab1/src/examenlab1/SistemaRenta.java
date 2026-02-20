@@ -24,11 +24,11 @@ public class SistemaRenta extends JFrame {
     static final Color C_MUTED=new Color(110,110,150);
     static final Color C_YELLOW=new Color(240,190,50);
 
-    static final Font F_TITLE=new Font("Times New Roman",Font.BOLD,26);
-    static final Font F_HEAD=new Font("Times New Roman",Font.BOLD,14);
-    static final Font F_MONO=new Font("Times New Roman",Font.PLAIN,12);
-    static final Font F_MONOB=new Font("Times New Roman",Font.BOLD,13);
-    static final Font F_SMALL=new Font("Times New Roman",Font.PLAIN,11);
+    static final Font F_TITLE=new Font("Times New Roman",Font.BOLD,30);
+    static final Font F_HEAD=new Font("Times New Roman",Font.BOLD,16);
+    static final Font F_MONO=new Font("Times New Roman",Font.PLAIN,14);
+    static final Font F_MONOB=new Font("Times New Roman",Font.BOLD,15);
+    static final Font F_SMALL=new Font("Times New Roman",Font.PLAIN,13);
 
     public SistemaRenta() {
         setTitle("MULTIMEDIA RENTAL SYSTEM");
@@ -49,7 +49,7 @@ public class SistemaRenta extends JFrame {
         JLabel logo = new JLabel("MULTIMEDIA RENTAL", SwingConstants.CENTER);
         logo.setFont(F_TITLE);
         logo.setForeground(C_RED);
-        logo.setBorder(BorderFactory.createEmptyBorder(16, 24, 14, 16));
+        logo.setBorder(BorderFactory.createEmptyBorder(16, 24, 14,16));
         h.add(logo, BorderLayout.NORTH);
       
         return h;
@@ -58,7 +58,7 @@ public class SistemaRenta extends JFrame {
     private JPanel buildMenu() {
         JPanel wrap = new JPanel(new GridBagLayout());
         wrap.setBackground(C_BG);
-        JPanel grid = new JPanel(new GridLayout(2, 2, 14, 14));
+        JPanel grid = new JPanel(new GridLayout(2,2,14,14));
         grid.setBackground(C_BG);
         grid.setBorder(BorderFactory.createEmptyBorder(30, 40, 30, 40));
         grid.add(navBtn("", "AGREGAR ITEM","Registrar pelicula o juego",C_RED,e -> accionAgregar()));
@@ -78,7 +78,7 @@ public class SistemaRenta extends JFrame {
                 g2.fillRoundRect(0, 0, getWidth(), getHeight(), 12, 12);
                 g2.setColor(getModel().isRollover() ? accent : C_BORDER);
                 g2.setStroke(new BasicStroke(1.5f));
-                g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 12, 12);
+                g2.drawRoundRect(0, 0, getWidth() - 1, getHeight()-1, 12, 12);
                 g2.setColor(accent);
                 g2.fillRoundRect(0, 0, 4, getHeight(), 4, 4);
                 g2.setFont(new Font("Times New Roman", Font.BOLD, 52));
@@ -86,7 +86,7 @@ public class SistemaRenta extends JFrame {
                 g2.drawString(letra, getWidth() - 58, getHeight() - 10);
                 g2.setFont(F_MONOB);
                 g2.setColor(C_TEXT);
-                g2.drawString(titulo, 20, getHeight() / 2 - 4);
+                g2.drawString(titulo,20,getHeight()/2-4);
                 g2.setFont(F_SMALL);
                 g2.setColor(C_MUTED);
                 g2.drawString(desc, 20, getHeight() / 2 + 14);
@@ -202,7 +202,7 @@ public class SistemaRenta extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new SistemaRenta().setVisible(true));
+        new SistemaRenta().setVisible(true);
     }
 
 
@@ -445,13 +445,7 @@ public class SistemaRenta extends JFrame {
                 if (idx >= 0) listModel.remove(idx);
             });
 
-            JPanel specPanel = new JPanel();
-            specPanel.setLayout(new BoxLayout(specPanel, BoxLayout.Y_AXIS));
-            specPanel.setBackground(C_PANEL);
-            specPanel.add(fieldLabel("ESPECIFICACIONES TECNICAS")); specPanel.add(Box.createVerticalStrut(3));
-            specPanel.add(specInput); specPanel.add(Box.createVerticalStrut(4));
-            specPanel.add(specScroll); specPanel.add(Box.createVerticalStrut(4));
-            specPanel.add(btnDelSpec);
+            
 
             JPanel body = new JPanel();
             body.setLayout(new BoxLayout(body, BoxLayout.Y_AXIS));
@@ -464,7 +458,7 @@ public class SistemaRenta extends JFrame {
                 setMaximumSize(new Dimension(9999, 1));
             }});
             body.add(Box.createVerticalStrut(10));
-            body.add(specPanel);
+
             add(body, BorderLayout.CENTER);
 
             errLabel = errorLabel();
